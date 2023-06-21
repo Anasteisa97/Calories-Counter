@@ -23,6 +23,7 @@ const AddingMeal = ({setSearchScreenIsActive}) => {
         <option value="Dinner">Dinner</option>
         <option value="Snack/other">Snack/other</option>
       </select>
+      <div>Total calories:</div>
       <button
         className="text-lg mt-6 px-6 py-3 bg-sky-100 rounded-xl shadow-lg"
         onClick={() => {

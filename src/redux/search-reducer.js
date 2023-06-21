@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {searchApi} from "../api/api";
-import {counter} from "../utils";
 
 // First, create the thunk
 export const fetchSearchResults = createAsyncThunk(
