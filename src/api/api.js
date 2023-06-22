@@ -44,3 +44,18 @@ export const searchApi = async (string = "") => {
   const data = await response.json();
   return data.foods.food;
 };
+
+export const getByIdApi = async (id) => {
+  let token = localStorage.token;
+  const response = await fetch(
+    apiUrl + `?method=food.get.v3&food_id=${id}&format=json`,
+    {
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+  const data = await response.json();
+  return data.food.servings.serving;
+}

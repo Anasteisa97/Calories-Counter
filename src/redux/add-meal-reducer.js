@@ -1,5 +1,12 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {fetchSearchResults} from "./search-reducer";
+import {getByIdApi} from "../api/api";
+
+export const fetchById = createAsyncThunk(
+  "getFoodById",
+  async (id) => {
+    return await getByIdApi(id);
+  }
+);
 
 const initialState = {
   currentMeal: {
@@ -17,6 +24,10 @@ const addMealSlice = createSlice({
   name: "addMeal",
   initialState,
   reducers: {
+    changeIngestionType(state, action) {
 
+    }
   },
 });
+
+export default addMealSlice.reducer;

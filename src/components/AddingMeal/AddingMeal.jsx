@@ -1,9 +1,11 @@
 import {useDispatch} from "react-redux";
 import {resetResults} from "../../redux/search-reducer";
+import { useSelector } from "react-redux";
 
 const AddingMeal = ({setSearchScreenIsActive}) => {
 
   const dispatch = useDispatch();
+  const currentResult = useSelector(state => state.addMeal.currentMeal)
 
   return(
     <>
