@@ -1,10 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { fetchById } from "../../redux/add-meal-reducer";
 
 const SearchResult = ({ meal, setSearchScreenIsActive }) => {
+  const dispatch = useDispatch();
 
   const handleResultClick = () => {
     setSearchScreenIsActive(false);
-  }
+    dispatch(fetchById(meal.food_id));
+  };
 
   return (
     <div

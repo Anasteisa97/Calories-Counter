@@ -1,31 +1,28 @@
-const justCorsUrl = 'https://justcors.com/tl_ef5c298/';
-const getTokenUrl = 'https://oauth.fatsecret.com/connect/token';
-const apiUrl = 'https://platform.fatsecret.com/rest/server.api/';
+const justCorsUrl = "https://justcors.com/tl_13580d2/";
+const getTokenUrl = "https://oauth.fatsecret.com/connect/token";
+const apiUrl = "https://platform.fatsecret.com/rest/server.api/";
 
 export const getToken = async () => {
-  const response = await fetch(
-    justCorsUrl + getTokenUrl,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Accept: '*/*',
-        "Accept-Encoding": "gzip, deflate, br",
-        Connection: "keep-alive",
-        Authorization:
-          "Basic " +
-          btoa(
-            "3db7ae348a784bb69c326c30c05774be" +
-              ":" +
-              "3a1f51f995fa4fa3a5f00a54f5650caf"
-          ),
-      },
-      body: new URLSearchParams({
-        grant_type: "client_credentials",
-        scope: "basic",
-      }),
-    }
-  );
+  const response = await fetch(justCorsUrl + getTokenUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Accept: "*/*",
+      "Accept-Encoding": "gzip, deflate, br",
+      Connection: "keep-alive",
+      Authorization:
+        "Basic " +
+        btoa(
+          "3db7ae348a784bb69c326c30c05774be" +
+            ":" +
+            "3a1f51f995fa4fa3a5f00a54f5650caf"
+        ),
+    },
+    body: new URLSearchParams({
+      grant_type: "client_credentials",
+      scope: "basic",
+    }),
+  });
   const data = await response.json();
   return data.access_token;
 };
@@ -57,5 +54,5 @@ export const getByIdApi = async (id) => {
     }
   );
   const data = await response.json();
-  return data.food.servings.serving;
-}
+  return data.food;
+};

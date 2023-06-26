@@ -1,10 +1,17 @@
 import MealContainer from "../Meal/MealContainer";
 import {useDispatch} from "react-redux";
 import {resetResults} from "../../redux/search-reducer";
+import {setIngestionType} from "../../redux/add-meal-reducer";
 
 export const Ingestion = ({ meals, ingestionTotalCalories, title, setRightScreenVisible }) => {
 
   const dispatch = useDispatch();
+
+  const handleBtnAddClick = () => {
+    setRightScreenVisible(true);
+    dispatch(resetResults());
+    dispatch(setIngestionType(title));
+  }
 
   return (
     <div className="w-80 max-w-full bg-sky-50 p-4 rounded-2xl shadow-lg">
@@ -16,10 +23,7 @@ export const Ingestion = ({ meals, ingestionTotalCalories, title, setRightScreen
           </span>) : null}
         <button
           className="p-1"
-          onClick={() => {
-            setRightScreenVisible(true);
-            dispatch(resetResults())
-          }}
+          onClick={() => handleBtnAddClick()}
         >
           +
         </button>
