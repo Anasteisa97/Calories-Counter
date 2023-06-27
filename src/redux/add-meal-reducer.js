@@ -6,7 +6,7 @@ export const fetchById = createAsyncThunk("getFoodById", async (id) => {
 });
 
 const initialState = {
-  currentMeal: {
+  /*currentMeal: {
     ingestionType: "Breakfast",
     measurement_description: "cup",
     metric_serving_amount: 241,
@@ -14,7 +14,9 @@ const initialState = {
     number_of_units: 1,
     calories: 60,
     food_name: "Chicken Rice Soup",
-  },
+  },*/
+  ingestionType: "Breakfast",
+  food_name: "Chicken Rice Soup",
   servings: [],
 };
 
@@ -23,14 +25,14 @@ const addMealSlice = createSlice({
   initialState,
   reducers: {
     setIngestionType(state, action) {
-      state.currentMeal.ingestionType = action.payload;
+      state.ingestionType = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchById.fulfilled, (state, action) => {
         state.servings = action.payload.servings.serving;
-        state.currentMeal.food_name = action.payload.food_name;
+        state.food_name = action.payload.food_name;
       })
       .addCase(fetchById.rejected, (state, action) => {
         state.currentMeal = {
