@@ -6,15 +6,6 @@ export const fetchById = createAsyncThunk("getFoodById", async (id) => {
 });
 
 const initialState = {
-  /*currentMeal: {
-    ingestionType: "Breakfast",
-    measurement_description: "cup",
-    metric_serving_amount: 241,
-    metric_serving_unit: "g",
-    number_of_units: 1,
-    calories: 60,
-    food_name: "Chicken Rice Soup",
-  },*/
   ingestionType: "Breakfast",
   food_name: "Chicken Rice Soup",
   servings: [],
@@ -34,7 +25,7 @@ const addMealSlice = createSlice({
         state.servings = action.payload.servings.serving;
         state.food_name = action.payload.food_name;
       })
-      .addCase(fetchById.rejected, (state, action) => {
+      .addCase(fetchById.rejected, (state) => {
         state.currentMeal = {
           food_name: "rejected",
         };

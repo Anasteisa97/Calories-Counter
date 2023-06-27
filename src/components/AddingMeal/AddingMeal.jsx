@@ -6,20 +6,21 @@ import {useState} from "react";
 
 const AddingMeal = ({ setSearchScreenIsActive }) => {
   const dispatch = useDispatch();
-  const currentIngestionType = useSelector((state) => state.addMeal.ingestionType);
-  const servings = useSelector((state) => state.addMeal.servings);
   const ingestionTypes = useSelector((state) => state.meals.ingestionTypes);
+  const { ingestionType, food_name, servings } = useSelector((state) => state.addMeal);
 
-  //console.log(currentMeal);
-  //console.log(servings);
+  let currentServing = servings[0];
 
-  let [selectedIngestionTYpe, setSelectedIngestionType] = useState(currentIngestionType)
+  let [selectedIngestionType, setSelectedIngestionType] = useState(ingestionType);
+  let [measurement, setMeasurement] = useState(currentServing.measurement_description);
+  let [numberOfUnits, setNumberOfUnits] = useState(currentServing.number_of_units);
+
+  console.log(servings);
 
   const handleBtnAddClick = () => {
     setSearchScreenIsActive(true);
     dispatch(resetResults());
     let testObj = {
-      serving_id: 666,
       ingestionType: "Breakfast",
       measurement_description: "cup",
       metric_serving_amount: 241,
@@ -31,8 +32,8 @@ const AddingMeal = ({ setSearchScreenIsActive }) => {
     dispatch(addMealOnMain(testObj));
   }
 
-  const handleSelectIngestionChange = (e) => {
-    setSelectedIngestionType(e.target.value);
+  const handleMeasurementChange = (e) => {
+    setMeasurement(e.target.value)
   }
 
   return (
@@ -43,15 +44,28 @@ const AddingMeal = ({ setSearchScreenIsActive }) => {
       >
         ←
       </button>
-      <h2>{currentIngestionType.food_name}</h2>
-      <input type="number" className="border-2 my-6 w-16" />
-      <select>
-        <option value="g">g</option>
-        <option value="cup">cup</option>
+      <h2>{food_name}</h2>
+      <input
+        type="number"
+        className="border-2 my-6 w-16"
+        value={numberOfUnits}
+        onChange={(e) => setNumberOfUnits(e.target.value)}
+      />
+      <select
+        name="measurement"
+        value={measurement}
+        onChange={(e) => handleMeasurementChange(e)}
+      >
+        {servings.map(s => (
+          <option value={s.measurement_description}>
+            {s.measurement_description}
+          </option>
+        ))}
       </select>
       <select
-        value={selectedIngestionTYpe}
-        onChange={(e) => handleSelectIngestionChange(e)}
+        name="ingestion"
+        value={selectedIngestionType}
+        onChange={(e) => setSelectedIngestionType(e.target.value)}
       >
         {ingestionTypes.map(type => (
           <option value={type} key={type}>
@@ -59,7 +73,9 @@ const AddingMeal = ({ setSearchScreenIsActive }) => {
           </option>
         ))}
       </select>
-      <div>Total calories:</div>
+      <div className="text-xl mt-6">
+        {currentServing.calories * currentServing.number_of_units} cal
+      </div>
       <button
         className="text-lg mt-6 px-6 py-3 bg-sky-100 rounded-xl shadow-lg"
         onClick={() => handleBtnAddClick()}

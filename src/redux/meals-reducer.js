@@ -6,7 +6,6 @@ const initialState = {
   mealsMain: [
     {
       id: counter(),
-      serving_id: 17204,
       ingestionType: "Breakfast",
       measurement_description: "cup",
       metric_serving_amount: 241,
@@ -17,7 +16,6 @@ const initialState = {
     },
     {
       id: counter(),
-      serving_id: 2423037,
       ingestionType: "Snack/other",
       measurement_description: "fl oz", //жидкая унция
       metric_serving_amount: 29.6,
@@ -28,7 +26,6 @@ const initialState = {
     },
     {
       id: counter(),
-      serving_id: 17204,
       ingestionType: "Snack/other",
       measurement_description: "cup",
       metric_serving_amount: 241,
