@@ -20,16 +20,16 @@ const AddingMeal = ({ setSearchScreenIsActive }) => {
   const handleBtnAddClick = () => {
     setSearchScreenIsActive(true);
     dispatch(resetResults());
-    let testObj = {
-      ingestionType: "Breakfast",
+    let newMeal = {
+      ingestionType: selectedIngestionType,
       measurement_description: "cup",
       metric_serving_amount: 241,
       metric_serving_unit: "g",
-      number_of_units: 1,
+      number_of_units: numberOfUnits,
       calories: 60,
-      food_name: "test",
+      food_name,
     }
-    dispatch(addMealOnMain(testObj));
+    dispatch(addMealOnMain(newMeal));
   }
 
   const handleMeasurementChange = (e) => {
@@ -74,7 +74,7 @@ const AddingMeal = ({ setSearchScreenIsActive }) => {
         ))}
       </select>
       <div className="text-xl mt-6">
-        {currentServing.calories * currentServing.number_of_units} cal
+        {currentServing.calories * numberOfUnits} cal
       </div>
       <button
         className="text-lg mt-6 px-6 py-3 bg-sky-100 rounded-xl shadow-lg"
