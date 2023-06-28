@@ -6,8 +6,8 @@ export const fetchById = createAsyncThunk("getFoodById", async (id) => {
 });
 
 const initialState = {
-  ingestionType: "Breakfast",
-  food_name: "Chicken Rice Soup",
+  ingestionType: "",
+  food_name: "",
   servings: [],
 };
 
