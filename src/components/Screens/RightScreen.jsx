@@ -1,6 +1,6 @@
 import Search from "../Search/Search";
 import {useState} from "react";
-import AddingMeal from "../AddingMeal/AddingMeal";
+import AddingMealContainer from "../AddingMeal/AddingMealContainer";
 
 const RightScreen = (props) => {
   let [searchScreenIsActive, setSearchScreenIsActive] = useState(true);
@@ -12,7 +12,7 @@ const RightScreen = (props) => {
       >x</button>
       {searchScreenIsActive
         ? <Search setSearchScreenIsActive={setSearchScreenIsActive} />
-        : <AddingMeal setSearchScreenIsActive={setSearchScreenIsActive}/>}
+        : <AddingMealContainer setSearchScreenIsActive={setSearchScreenIsActive}/>}
     </div>
   );
 };

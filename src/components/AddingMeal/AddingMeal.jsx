@@ -1,66 +1,28 @@
-import { useDispatch } from "react-redux";
-import { resetResults } from "../../redux/search-reducer";
-import {addMealOnMain} from "../../redux/meals-reducer";
-import { useSelector } from "react-redux";
-import {useEffect, useState} from "react";
-
-const AddingMeal = ({ setSearchScreenIsActive }) => {
-  const dispatch = useDispatch();
-
-  const { ingestionType, food_name, servings } = useSelector((state) => state.addMeal);
-  const ingestionTypes = useSelector((state) => state.meals.ingestionTypes);
-
-  useEffect(() => {
-    if (servings.length > 0) {
-      setNumberOfUnits(servings[0].number_of_units);
-      setMeasurement(servings[0].measurement_description)
-      setServingCalories(servings[0].calories)
-    }
-  }, [servings]);
-
-  let [numberOfUnits, setNumberOfUnits] = useState();
-  let [measurement, setMeasurement] = useState();
-  let [servingCalories, setServingCalories] = useState();
-  let [selectedIngestionType, setSelectedIngestionType] = useState(ingestionType);
-
-  const handleBtnAddClick = () => {
-    setSearchScreenIsActive(true);
-    dispatch(resetResults());
-    let newMeal = {
-      ingestionType: selectedIngestionType,
-      measurement_description: "cup",
-      metric_serving_amount: 241,
-      metric_serving_unit: "g",
-      number_of_units: numberOfUnits,
-      calories: 60,
-      food_name,
-    }
-    dispatch(addMealOnMain(newMeal));
-  }
+const AddingMeal = (props) => {
 
   return <>
     <button
       className="text-4xl absolute top-4 left-4"
-      onClick={() => setSearchScreenIsActive(true)}
+      onClick={() => props.setSearchScreenIsActive(true)}
     >
       ←
     </button>
-    <h2>{food_name}</h2>
+    <h2>{props.food_name}</h2>
 
-    {numberOfUnits && <input
+    {props.numberOfUnits && <input
       type="number"
       className="border-2 my-6 w-16"
-      value={numberOfUnits}
-      onChange={(e) => setNumberOfUnits(e.target.value)}
+      value={props.numberOfUnits}
+      onChange={(e) => props.setNumberOfUnits(e.target.value)}
     />}
 
-    {measurement && <select
+    {props.measurement && <select
       name="measurement"
-      value={measurement}
-      onChange={(e) => setMeasurement(e.target.value)}
+      value={props.measurement}
+      onChange={(e) => props.setMeasurement(e.target.value)}
     >
-      {servings && servings.map(s => (
-        <option value={s.measurement_description}>
+      {props.servings && props.servings.map(s => (
+        <option value={s.measurement_description} key={s.measurement_description} >
           {s.measurement_description}
         </option>
       ))}
@@ -68,10 +30,10 @@ const AddingMeal = ({ setSearchScreenIsActive }) => {
 
     <select
       name="ingestion"
-      value={selectedIngestionType}
-      onChange={(e) => setSelectedIngestionType(e.target.value)}
+      value={props.selectedIngestionType}
+      onChange={(e) => props.setSelectedIngestionType(e.target.value)}
     >
-      {ingestionTypes.map(type => (
+      {props.ingestionTypes.map(type => (
         <option value={type} key={type}>
           {type}
         </option>
@@ -79,12 +41,12 @@ const AddingMeal = ({ setSearchScreenIsActive }) => {
     </select>
 
     <div className="text-xl mt-6">
-      {servingCalories * numberOfUnits} cal
+      {props.servingCalories * props.numberOfUnits} cal
     </div>
 
     <button
       className="text-lg mt-6 px-6 py-3 bg-sky-100 rounded-xl shadow-lg"
-      onClick={() => handleBtnAddClick()}
+      onClick={() => props.handleBtnAddClick()}
     >
       ADD
     </button>
