@@ -1,16 +1,20 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {searchApi} from "../api/api";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { searchApi } from "../api/api";
 
-// First, create the thunk
 export const fetchSearchResults = createAsyncThunk(
   "getSearchResults",
   async (searchString) => {
-    return await searchApi(searchString);
+    try {
+      return await searchApi(searchString);
+    } catch (err) {
+      throw err;
+    }
   }
 );
 
 const initialState = {
   results: [],
+  error: null,
 };
 
 const searchSlice = createSlice({
@@ -25,17 +29,11 @@ const searchSlice = createSlice({
     builder
       .addCase(fetchSearchResults.fulfilled, (state, action) => {
         state.results = action.payload;
+        state.error = null;
       })
       .addCase(fetchSearchResults.rejected, (state, action) => {
-        state.results = [
-          {
-            food_description:
-              "rejected",
-            food_id: "rejected",
-            food_name: "rejected",
-          },
-        ];
-      })
+        state.error = action.error.message;
+      });
   },
 });
 

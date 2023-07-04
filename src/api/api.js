@@ -1,4 +1,4 @@
-const justCorsUrl = "https://justcors.com/tl_95efa64/";
+const justCorsUrl = "https://justcors.com/tl_7dee161/";
 const getTokenUrl = "https://oauth.fatsecret.com/connect/token";
 const apiUrl = "https://platform.fatsecret.com/rest/server.api/";
 
@@ -39,7 +39,11 @@ export const searchApi = async (string = "") => {
     }
   );
   const data = await response.json();
-  return data.foods.food;
+  if (data.foods.food) {
+    return data.foods.food;
+  } else {
+    throw new Error(data.error.message);
+  }
 };
 
 export const getByIdApi = async (id) => {
