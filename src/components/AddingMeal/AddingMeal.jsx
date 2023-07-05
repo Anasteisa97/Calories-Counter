@@ -13,7 +13,7 @@ const AddingMeal = ({ serving, food_name, ...props }) => {
         <input
           type="number"
           className="border-2 my-6 w-16"
-          value={serving.number_of_units}
+          value={serving.totalNumberOfUnits}
           onChange={(e) => props.setNumberOfUnits(e.target.value)}
         />
 
@@ -49,7 +49,7 @@ const AddingMeal = ({ serving, food_name, ...props }) => {
         </select>
 
         <div className="text-xl mt-6">
-          {serving.calories * serving.number_of_units} cal
+          {(serving.calories * serving.totalNumberOfUnits) / serving.number_of_units} cal
         </div>
 
         <button

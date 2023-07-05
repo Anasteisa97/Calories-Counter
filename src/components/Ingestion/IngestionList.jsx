@@ -7,7 +7,7 @@ const IngestionList = ({ ingestionTypes, meals, setRightScreenVisible }) => {
 
   const ingestionTotalCalories = (meals, title) => {
     return mealsInIngestion(meals, title).reduce(
-      (acc, curVal) => acc + curVal.calories * curVal.number_of_units,
+      (acc, curVal) => acc + ((curVal.totalNumberOfUnits * curVal.calories) / curVal.number_of_units),
       0
     );
   };

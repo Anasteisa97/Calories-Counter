@@ -42,7 +42,7 @@ const AddingMealContainer = ({ setSearchScreenIsActive }) => {
   };
 
   const setNumberOfUnits = (n) => {
-    setCurrentServing({ ...currentServing, number_of_units: n });
+    setCurrentServing({ ...currentServing, totalNumberOfUnits: n });
   };
   const setMeasurement = (n) => {
     setCurrentServing({ ...currentServing, measurement_description: n });

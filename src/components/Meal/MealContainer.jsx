@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { deleteMealOnMain } from "../../redux/meals-reducer";
 
 const MealContainer = (props) => {
-  let { calories, metric_serving_amount, number_of_units } = props.meal;
+  let { calories, metric_serving_amount, number_of_units, totalNumberOfUnits } = props.meal;
 
-  const totalMealCalories = number_of_units * calories;
+  const totalMealCalories = (totalNumberOfUnits * calories) / number_of_units;
   const totalMetricServingAmount = (
-    number_of_units * metric_serving_amount
+    (totalNumberOfUnits * metric_serving_amount) / number_of_units
   ).toFixed(2);
 
   return (

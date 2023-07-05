@@ -16,8 +16,8 @@ export const Meal = ({
       <div>
         <div>{food_name}</div>
         <div className="text-xs text-slate-500">
-          {totalMetricServingAmount} {metric_serving_unit} / {number_of_units}{" "}
-          {measurement_description}
+          {totalMetricServingAmount} {metric_serving_unit}{" "}
+          / {number_of_units} {measurement_description}
         </div>
       </div>
       <span className="grow mx-2 text-right">{totalMealCalories}</span>

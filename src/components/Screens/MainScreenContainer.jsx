@@ -3,7 +3,7 @@ import MainScreen from "./MainScreen";
 
 const MainScreenContainer = (props) => {
   const totalCalories = props.meals.reduce(
-    (acc, curVal) => acc + curVal.calories * curVal.number_of_units,
+    (acc, curVal) => acc + ((curVal.totalNumberOfUnits * curVal.calories) / curVal.number_of_units),
     0
   );
   return <MainScreen totalCalories={totalCalories} {...props} />;

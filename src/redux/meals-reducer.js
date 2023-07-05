@@ -13,6 +13,7 @@ const initialState = {
       number_of_units: 1,
       calories: 60,
       food_name: "Chicken Rice Soup",
+      totalNumberOfUnits: 1
     },
     {
       id: counter(),
@@ -20,19 +21,21 @@ const initialState = {
       measurement_description: "fl oz", //жидкая унция
       metric_serving_amount: 29.6,
       metric_serving_unit: "g",
-      number_of_units: 3, // тут считать
+      number_of_units: 1,
       calories: 4,
       food_name: "Coffee with Cream",
+      totalNumberOfUnits: 3 // тут считать
     },
     {
       id: counter(),
       ingestionType: "Snack/other",
-      measurement_description: "cup",
-      metric_serving_amount: 241,
+      measurement_description: "g",
+      metric_serving_amount: 100,
       metric_serving_unit: "g",
-      number_of_units: 1.5,
-      calories: 60,
-      food_name: "Chicken Rice Soup",
+      number_of_units: 100,
+      calories: 266,
+      food_name: "White Bread",
+      totalNumberOfUnits: 120 // тут считать
     },
   ],
 };
