@@ -1,12 +1,12 @@
 import { Ingestion } from "./Ingestion";
 
 const IngestionList = ({ ingestionTypes, meals, setRightScreenVisible }) => {
-  const mealsInIngestion = (meals, title) => {
+  const getMealsInIngestion = (meals, title) => {
     return meals?.filter((meal) => meal.ingestionType === title);
   };
 
-  const ingestionTotalCalories = (meals, title) => {
-    return mealsInIngestion(meals, title).reduce(
+  const getIngestionTotalCalories = (meals, title) => {
+    return getMealsInIngestion(meals, title).reduce(
       (acc, curVal) => acc + ((curVal.totalNumberOfUnits * curVal.calories) / curVal.number_of_units),
       0
     );
@@ -14,11 +14,11 @@ const IngestionList = ({ ingestionTypes, meals, setRightScreenVisible }) => {
 
   return ingestionTypes.map((i) => (
     <Ingestion
-      meals={mealsInIngestion(meals, i)}
+      meals={getMealsInIngestion(meals, i)}
       title={i}
       key={i}
       setRightScreenVisible={setRightScreenVisible}
-      ingestionTotalCalories={ingestionTotalCalories(meals, i)}
+      ingestionTotalCalories={getIngestionTotalCalories(meals, i)}
     />
   ));
 };

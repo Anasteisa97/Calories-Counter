@@ -1,6 +1,5 @@
 import MealContainer from "../Meal/MealContainer";
 import {useDispatch} from "react-redux";
-import {resetResults} from "../../redux/search-reducer";
 import {setIngestionType} from "../../redux/add-meal-reducer";
 
 export const Ingestion = ({ meals, ingestionTotalCalories, title, setRightScreenVisible }) => {
@@ -9,7 +8,6 @@ export const Ingestion = ({ meals, ingestionTotalCalories, title, setRightScreen
 
   const handleBtnAddClick = () => {
     setRightScreenVisible(true);
-    dispatch(resetResults());
     dispatch(setIngestionType(title));
   }
 
