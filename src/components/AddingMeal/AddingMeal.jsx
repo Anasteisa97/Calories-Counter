@@ -14,6 +14,7 @@ const AddingMeal = ({ serving, food_name, ...props }) => {
           type="number"
           className="border-2 my-6 w-16"
           value={serving.totalNumberOfUnits}
+          min={0}
           onChange={(e) => props.setNumberOfUnits(e.target.value)}
         />
 

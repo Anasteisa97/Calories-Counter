@@ -1,15 +1,13 @@
 export const Meal = ({
-  totalMealCalories,
-  totalMetricServingAmount,
-  ...props
+  totalMealCalories, totalMetricServingAmount, deleteMealOnMain, meal,
 }) => {
   let {
     id,
     food_name,
     metric_serving_unit,
-    number_of_units,
+    totalNumberOfUnits,
     measurement_description,
-  } = props.meal;
+  } = meal;
 
   return (
     <div className="flex items-center justify-between">
@@ -17,11 +15,11 @@ export const Meal = ({
         <div>{food_name}</div>
         <div className="text-xs text-slate-500">
           {totalMetricServingAmount} {metric_serving_unit}{" "}
-          / {number_of_units} {measurement_description}
+          / {totalNumberOfUnits} {measurement_description}
         </div>
       </div>
       <span className="grow mx-2 text-right">{totalMealCalories}</span>
-      <button className="p-1" onClick={() => props.deleteMealOnMain(id)}>
+      <button className="p-1" onClick={() => deleteMealOnMain(id)}>
         x
       </button>
     </div>

@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import { resetResults } from "../../redux/search-reducer";
 import { addMealOnMain } from "../../redux/meals-reducer";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -17,25 +16,16 @@ const AddingMealContainer = ({ setSearchScreenIsActive }) => {
     if (servings.length > 0) {
       setCurrentServing(servings[0]);
     }
-    return () => {
-      dispatch(resetResults());
-    };
   }, [servings, dispatch]);
 
   let [currentServing, setCurrentServing] = useState();
-  let [selectedIngestionType, setSelectedIngestionType] =
-    useState(ingestionType);
+  let [selectedIngestionType, setSelectedIngestionType] = useState(ingestionType);
 
   const handleBtnAddClick = () => {
     setSearchScreenIsActive(true);
     let newMeal = {
       ...currentServing,
       ingestionType: selectedIngestionType,
-      //measurement_description: measurement,
-      //metric_serving_amount: 241,
-      //metric_serving_unit: "g",
-      //number_of_units: currentServing.numberOfUnits,
-      //calories: servingCalories,
       food_name,
     };
     dispatch(addMealOnMain(newMeal));

@@ -29,7 +29,7 @@ const addMealSlice = createSlice({
           for (const prop in serving) {
             if (!(servingProps.includes(prop))) delete serving[prop];
           }
-          serving.totalNumberOfUnits = serving.number_of_units;
+          serving.totalNumberOfUnits = serving.number_of_units = +(Number(serving.number_of_units)).toFixed(2);
         })
         state.food_name = action.payload.food_name;
       })
