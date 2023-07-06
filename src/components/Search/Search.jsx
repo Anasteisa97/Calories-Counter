@@ -2,6 +2,7 @@ import SearchResults from "./SearchResults";
 import {fetchSearchResults} from "../../redux/search-reducer";
 import {useDispatch} from "react-redux";
 import {useState} from "react";
+import {TextField} from "@mui/material";
 
 const Search = ({setSearchScreenIsActive}) => {
   const dispatch = useDispatch();
@@ -14,11 +15,11 @@ const Search = ({setSearchScreenIsActive}) => {
 
   return (
     <>
-      <input
-        placeholder="search"
+      <TextField
+        id="outlined-basic" label="Search" variant="outlined"
         type="search"
-        className="border-2 mb-6"
         value={searchString}
+        style={{marginBottom: 24}}
         onChange={(e) => handleInputChange(e)}
       />
       <SearchResults setSearchScreenIsActive={setSearchScreenIsActive}/>

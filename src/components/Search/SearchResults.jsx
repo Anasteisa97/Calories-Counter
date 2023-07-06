@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import SearchResult from "./SearchResult";
 import {resetResults} from "../../redux/search-reducer";
+import Error from "../common/Error/Error";
 
 const SearchResults = ({ setSearchScreenIsActive }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const SearchResults = ({ setSearchScreenIsActive }) => {
   }, [])
 
   if (error) {
-    return <p className="text-red-700">{error}</p>;
+    return <Error message={error}/>
   }
 
   return (

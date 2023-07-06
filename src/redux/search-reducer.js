@@ -5,7 +5,8 @@ export const fetchSearchResults = createAsyncThunk(
   "getSearchResults",
   async (searchString) => {
     try {
-      return await searchApi(searchString);
+      const response = await searchApi(searchString);
+      return response.food ?? [];
     } catch (err) {
       throw err;
     }

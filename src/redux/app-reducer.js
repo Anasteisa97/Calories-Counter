@@ -1,4 +1,4 @@
-import {checkTokenData} from "../common/checkTokenData";
+import {checkTokenData} from "../api/checkTokenData";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 

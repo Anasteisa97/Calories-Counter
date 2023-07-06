@@ -1,4 +1,4 @@
-import { getToken } from "../api/api";
+import { getToken } from "./api";
 
 const setNewTokenData = (newTokenExpiresData) => {
   newTokenExpiresData.setDate(newTokenExpiresData.getDate() + 1); // + 1 сутки с текущей даты

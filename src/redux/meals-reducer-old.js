@@ -1,4 +1,4 @@
-import { counter } from "../utils";
+import { counter } from "../utils/counter";
 
 const ADD_MEAL_MAIN = "ADD_MEAL_MAIN";
 const DELETE_MEAL_MAIN = "DELETE_MEAL_MAIN";

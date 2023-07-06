@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { counter } from "../utils";
+import { counter } from "../utils/counter";
 
 const initialState = {
   ingestionTypes: ["Breakfast", "Lunch", "Dinner", "Snack/other"],
