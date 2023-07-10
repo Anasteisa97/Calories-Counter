@@ -1,27 +1,24 @@
 import {checkTokenData} from "../api/checkTokenData";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
-const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
+export const initializeApp = createAsyncThunk("checkToken", async () => {
+  return await checkTokenData;
+});
 
-let initialState = {
+const initialState = {
   initialized: false,
 }
 
-const appReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case INITIALIZED_SUCCESS:
-      return {
-        ...state,
-        initialized: true
-      }
-    default:
-      return state;
+const appSlice = createSlice({
+  name: "app",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(initializeApp.fulfilled, (state) => {
+        state.initialized = true;
+      })
   }
-}
+})
 
-export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
-
-export const initializeApp = () => (dispatch) => {
-  checkTokenData.then(() => dispatch(initializedSuccess()))
-}
-
-export default appReducer;
+export default appSlice.reducer;

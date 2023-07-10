@@ -1,4 +1,4 @@
-const justCorsUrl = "https://justcors.com/tl_8852931/";
+const justCorsUrl = "https://justcors.com/tl_927ab21/";
 const getTokenUrl = "https://oauth.fatsecret.com/connect/token";
 const apiUrl = "https://platform.fatsecret.com/rest/server.api/";
 

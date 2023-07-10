@@ -2,41 +2,37 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import RightScreen from "./components/Screens/RightScreen";
 import MainScreenContainer from "./components/Screens/MainScreenContainer";
-import { connect, Provider } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
 import React from "react";
 import store from "./redux/redux-store";
 
 function App(props) {
   let [isRightScreenVisible, setRightScreenVisible] = useState(false);
+  let isInitialized = useSelector((state) => state.app.initialized);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    props.initializeApp();
+    dispatch(initializeApp());
   }, []);
 
-  return !props.initialized ? (
-    <div>wait</div>
-  ) : (
+  return isInitialized ? (
     <div className="flex">
       <MainScreenContainer setRightScreenVisible={setRightScreenVisible} />
       {isRightScreenVisible && (
         <RightScreen setRightScreenVisible={setRightScreenVisible} />
       )}
     </div>
+  ) : (
+    <div>wait</div>
   );
 }
-
-const mapStateToProps = (state) => ({
-  initialized: state.app.initialized,
-});
-
-let AppContainer = connect(mapStateToProps, { initializeApp })(App);
 
 const CaloriesCounterApp = (props) => {
   return (
     <React.StrictMode>
       <Provider store={store}>
-        <AppContainer />
+        <App />
       </Provider>
     </React.StrictMode>
   );
