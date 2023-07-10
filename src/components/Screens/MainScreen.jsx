@@ -7,7 +7,6 @@ const MainScreen = ({ totalCalories, ...props }) => {
         <IngestionList
           ingestionTypes={props.ingestionTypes}
           meals={props.meals}
-          setRightScreenVisible={props.setRightScreenVisible}
         />
       </div>
       <div className="text-4xl mt-6">{totalCalories}</div>

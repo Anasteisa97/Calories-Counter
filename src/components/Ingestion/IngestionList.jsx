@@ -1,6 +1,6 @@
 import { Ingestion } from "./Ingestion";
 
-const IngestionList = ({ ingestionTypes, meals, setRightScreenVisible }) => {
+const IngestionList = ({ ingestionTypes, meals }) => {
   const getMealsInIngestion = (meals, title) => {
     return meals?.filter((meal) => meal.ingestionType === title);
   };
@@ -17,7 +17,6 @@ const IngestionList = ({ ingestionTypes, meals, setRightScreenVisible }) => {
       meals={getMealsInIngestion(meals, i)}
       title={i}
       key={i}
-      setRightScreenVisible={setRightScreenVisible}
       ingestionTotalCalories={getIngestionTotalCalories(meals, i)}
     />
   ));
