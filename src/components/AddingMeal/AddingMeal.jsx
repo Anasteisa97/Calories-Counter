@@ -4,7 +4,7 @@ const AddingMeal = ({ serving, food_name, ...props }) => {
       <>
         <button
           className="text-4xl absolute top-4 left-4"
-          onClick={() => props.setSearchScreenIsActive(true)}
+          onClick={() => props.backToSearch()}
         >
           ←
         </button>

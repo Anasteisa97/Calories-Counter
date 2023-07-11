@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import "./App.css";
-import RightScreen from "./components/Screens/RightScreen";
+import RightScreenContainer from "./components/Screens/RightScreenContainer";
 import MainScreenContainer from "./components/Screens/MainScreenContainer";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
@@ -15,10 +15,10 @@ function AppContainer(props) {
 
   useEffect(() => {
     dispatch(initializeApp());
-  }, []);
+  }, [dispatch]);
 
   return isInitialized ? (
-    <RightScreenContext.Provider value={{isRightScreenVisible, setRightScreenVisible}}>
+    <RightScreenContext.Provider value={{setRightScreenVisible}}>
       <App isRightScreenVisible={isRightScreenVisible}/>
     </RightScreenContext.Provider>
   ) : (
@@ -30,7 +30,7 @@ const App = ({isRightScreenVisible}) => {
   return (
     <div className="flex">
       <MainScreenContainer />
-      {isRightScreenVisible && <RightScreen />}
+      {isRightScreenVisible && <RightScreenContainer />}
     </div>
   )
 }

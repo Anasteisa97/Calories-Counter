@@ -1,15 +1,15 @@
 import { useDispatch } from "react-redux";
 import { addMealOnMain } from "../../redux/meals-reducer";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import AddingMeal from "./AddingMeal";
+import {SearchActiveContext} from "../../Contexts/contexts";
 
-const AddingMealContainer = ({ setSearchScreenIsActive }) => {
+const AddingMealContainer = ( props ) => {
   const dispatch = useDispatch();
+  let {setSearchScreenIsActive} = useContext(SearchActiveContext);
 
-  const { ingestionType, food_name, servings } = useSelector(
-    (state) => state.addMeal
-  );
+  const { ingestionType, food_name, servings } = useSelector((state) => state.addMeal );
   const ingestionTypes = useSelector((state) => state.meals.ingestionTypes);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const AddingMealContainer = ({ setSearchScreenIsActive }) => {
 
   return (
     <AddingMeal
-      setSearchScreenIsActive={setSearchScreenIsActive}
+      backToSearch={() => setSearchScreenIsActive(true)}
       servings={servings}
       food_name={food_name}
       setNumberOfUnits={setNumberOfUnits}

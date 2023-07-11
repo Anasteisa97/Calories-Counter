@@ -4,10 +4,9 @@ import SearchResult from "./SearchResult";
 import {resetResults} from "../../redux/search-reducer";
 import Error from "../common/Error/Error";
 
-const SearchResults = ({ setSearchScreenIsActive }) => {
+const SearchResults = (props) => {
   const dispatch = useDispatch();
-  const results = useSelector((state) => state.search.results);
-  const error = useSelector((state) => state.search.error);
+  const { results, error } = useSelector((state) => state.search);
 
   useEffect(() => {
     return () => {
@@ -26,14 +25,12 @@ const SearchResults = ({ setSearchScreenIsActive }) => {
           <SearchResult
             meal={meal}
             key={meal.food_id}
-            setSearchScreenIsActive={setSearchScreenIsActive}
           />
         ))
       ) : (
         <SearchResult
           meal={results}
           key={results.food_id}
-          setSearchScreenIsActive={setSearchScreenIsActive}
         />
       )}
     </div>

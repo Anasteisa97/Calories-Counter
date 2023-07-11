@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useDispatch } from "react-redux";
 import { fetchById } from "../../redux/add-meal-reducer";
+import { SearchActiveContext } from "../../Contexts/contexts";
 
-const SearchResult = ({ meal, setSearchScreenIsActive }) => {
+const SearchResult = ({ meal }) => {
   const dispatch = useDispatch();
+  let {setSearchScreenIsActive} = useContext(SearchActiveContext);
 
-  const handleResultClick = () => {
+  const handleClick = () => {
     setSearchScreenIsActive(false);
     dispatch(fetchById(meal.food_id));
   };
@@ -13,7 +15,7 @@ const SearchResult = ({ meal, setSearchScreenIsActive }) => {
   return (
     <div
       className="p-3 hover:bg-blue-100 border-b-2 last:border-b-0 cursor-pointer"
-      onClick={() => handleResultClick()}
+      onClick={() => handleClick()}
     >
       <p className="mb-1">{meal.food_name}</p>
       <p className="text-sm text-slate-500">{meal.food_description}</p>

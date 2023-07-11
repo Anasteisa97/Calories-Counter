@@ -4,7 +4,7 @@ import {useDispatch} from "react-redux";
 import {useState} from "react";
 import {TextField} from "@mui/material";
 
-const Search = ({setSearchScreenIsActive}) => {
+const Search = (props) => {
   const dispatch = useDispatch();
   let [searchString, setSearchString] = useState('');
 
@@ -22,7 +22,7 @@ const Search = ({setSearchScreenIsActive}) => {
         style={{marginBottom: 24}}
         onChange={(e) => handleInputChange(e)}
       />
-      <SearchResults setSearchScreenIsActive={setSearchScreenIsActive}/>
+      <SearchResults />
     </>
   )
 }
