@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 import {setIngestionType} from "../../redux/add-meal-reducer";
 import {useContext} from "react";
 import {RightScreenContext} from "../../Contexts/contexts";
+import AddIcon from '@mui/icons-material/Add';
 
 export const Ingestion = ({ meals, ingestionTotalCalories, title }) => {
 
@@ -26,7 +27,9 @@ export const Ingestion = ({ meals, ingestionTotalCalories, title }) => {
         <button
           className="p-1"
           onClick={() => handleBtnAddClick()}
-        >+</button>
+        >
+          <AddIcon fontSize="small" />
+        </button>
       </div>
       {meals.length > 0 && meals.map((meal) => <MealContainer meal={meal} key={meal.id} />)}
     </div>

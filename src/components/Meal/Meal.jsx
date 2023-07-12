@@ -1,3 +1,5 @@
+import CloseIcon from '@mui/icons-material/Close';
+
 export const Meal = ({
   totalMealCalories, totalMetricServingAmount, deleteMealOnMain, meal,
 }) => {
@@ -20,7 +22,7 @@ export const Meal = ({
       </div>
       <span className="grow mx-2 text-right">{totalMealCalories}</span>
       <button className="p-1" onClick={() => deleteMealOnMain(id)}>
-        x
+        <CloseIcon fontSize="small"/>
       </button>
     </div>
   );

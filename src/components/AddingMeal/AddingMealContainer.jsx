@@ -34,9 +34,6 @@ const AddingMealContainer = ( props ) => {
   const setNumberOfUnits = (n) => {
     setCurrentServing({ ...currentServing, totalNumberOfUnits: n });
   };
-  const setMeasurement = (n) => {
-    setCurrentServing({ ...currentServing, measurement_description: n });
-  };
 
   const handleChangeServing = (i) => {
     setCurrentServing(servings[i]);
@@ -48,7 +45,6 @@ const AddingMealContainer = ( props ) => {
       servings={servings}
       food_name={food_name}
       setNumberOfUnits={setNumberOfUnits}
-      setMeasurement={setMeasurement}
       selectedIngestionType={selectedIngestionType}
       setSelectedIngestionType={setSelectedIngestionType}
       ingestionTypes={ingestionTypes}
