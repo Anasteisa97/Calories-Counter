@@ -1,4 +1,4 @@
-import {checkTokenData} from "../api/checkTokenData";
+import {checkTokenData} from "../api/token/checkTokenData";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const initializeApp = createAsyncThunk("checkToken", async () => {

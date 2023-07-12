@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getByIdApi } from "../api/api";
+import { searchApi } from "../api/api";
 
 export const fetchById = createAsyncThunk("getFoodById", async (id) => {
-  return await getByIdApi(id);
+  return await searchApi.getById(id);
 });
 
 const servingProps = ['calories', 'measurement_description', 'metric_serving_amount', 'metric_serving_unit', 'number_of_units', 'serving_description'];
