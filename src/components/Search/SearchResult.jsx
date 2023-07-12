@@ -5,10 +5,10 @@ import { SearchActiveContext } from "../../Contexts/contexts";
 
 const SearchResult = ({ meal }) => {
   const dispatch = useDispatch();
-  let {setSearchScreenIsActive} = useContext(SearchActiveContext);
+  let {setSearchScreenActive} = useContext(SearchActiveContext);
 
   const handleClick = () => {
-    setSearchScreenIsActive(false);
+    setSearchScreenActive(false);
     dispatch(fetchById(meal.food_id));
   };
 

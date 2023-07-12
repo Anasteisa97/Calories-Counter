@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import "./App.css";
-import RightScreenContainer from "./components/Screens/RightScreenContainer";
-import MainScreenContainer from "./components/Screens/MainScreenContainer";
+import RightScreenContainer from "./components/Screens/RightScreen";
+import MainScreen from "./components/Screens/MainScreen";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
 import React from "react";
@@ -29,7 +29,7 @@ function AppContainer(props) {
 const App = ({isRightScreenVisible}) => {
   return (
     <div className="flex">
-      <MainScreenContainer />
+      <MainScreen />
       {isRightScreenVisible && <RightScreenContainer />}
     </div>
   )

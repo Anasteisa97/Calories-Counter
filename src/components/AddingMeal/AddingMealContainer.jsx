@@ -7,7 +7,7 @@ import {SearchActiveContext} from "../../Contexts/contexts";
 
 const AddingMealContainer = ( props ) => {
   const dispatch = useDispatch();
-  let {setSearchScreenIsActive} = useContext(SearchActiveContext);
+  let {setSearchScreenActive} = useContext(SearchActiveContext);
 
   const { ingestionType, food_name, servings } = useSelector((state) => state.addMeal );
   const ingestionTypes = useSelector((state) => state.meals.ingestionTypes);
@@ -16,13 +16,13 @@ const AddingMealContainer = ( props ) => {
     if (servings.length > 0) {
       setCurrentServing(servings[0]);
     }
-  }, [servings, dispatch]);
+  }, [servings]);
 
   let [currentServing, setCurrentServing] = useState();
   let [selectedIngestionType, setSelectedIngestionType] = useState(ingestionType);
 
   const handleBtnAddClick = () => {
-    setSearchScreenIsActive(true);
+    setSearchScreenActive(true);
     let newMeal = {
       ...currentServing,
       ingestionType: selectedIngestionType,
@@ -44,7 +44,7 @@ const AddingMealContainer = ( props ) => {
 
   return (
     <AddingMeal
-      backToSearch={() => setSearchScreenIsActive(true)}
+      backToSearch={() => setSearchScreenActive(true)}
       servings={servings}
       food_name={food_name}
       setNumberOfUnits={setNumberOfUnits}

@@ -26,13 +26,9 @@ export const Ingestion = ({ meals, ingestionTotalCalories, title }) => {
         <button
           className="p-1"
           onClick={() => handleBtnAddClick()}
-        >
-          +
-        </button>
+        >+</button>
       </div>
-      {meals.length
-        ? meals.map((meal) => <MealContainer meal={meal} key={meal.id} />)
-        : null}
+      {meals.length > 0 && meals.map((meal) => <MealContainer meal={meal} key={meal.id} />)}
     </div>
   );
 };
