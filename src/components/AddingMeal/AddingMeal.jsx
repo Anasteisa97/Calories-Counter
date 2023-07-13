@@ -26,9 +26,9 @@ const AddingMeal = ({ serving, food_name, backToSearch, setNumberOfUnits, handle
 
         <FormElement>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Measurement</InputLabel>
+            <InputLabel id="measurement">Measurement</InputLabel>
             <Select value={serving.measurement_description}
-                    labelId="demo-simple-select-label" label="Measurement">
+                    labelId="measurement" label="Measurement">
               {servings && servings.map((s, i) => (
                 <MenuItem
                   value={s.measurement_description} key={s.measurement_description}
@@ -42,17 +42,17 @@ const AddingMeal = ({ serving, food_name, backToSearch, setNumberOfUnits, handle
         </FormElement>
 
         <FormElement>
-          <select
-            name="ingestion"
-            value={selectedIngestionType}
-            onChange={(e) => setSelectedIngestionType(e.target.value)}
-          >
-            {ingestionTypes.map((type) => (
-              <option value={type} key={type}>
-                {type}
-              </option>
-            ))}
-          </select>
+          <FormControl>
+            <InputLabel id="ingestion">Ingestion</InputLabel>
+            <Select value={selectedIngestionType} labelId="ingestion" label="Ingestion"
+                    onChange={(e) => setSelectedIngestionType(e.target.value)}>
+              {ingestionTypes.map((type) => (
+                <MenuItem value={type} key={type}>
+                  {type}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </FormElement>
 
         <div className="text-xl mt-6">
