@@ -1,8 +1,10 @@
 import {checkTokenData} from "../api/token/checkTokenData";
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {checkTokenInCookie} from "../utils/cookie/checkTokenInCookie";
 
 export const initializeApp = createAsyncThunk("checkToken", async () => {
-  return await checkTokenData;
+  //return await checkTokenData;
+  return await checkTokenInCookie;
 });
 
 const initialState = {

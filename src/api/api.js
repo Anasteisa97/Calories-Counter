@@ -1,12 +1,14 @@
 import axios from "axios";
+import {getCookie} from "../utils/cookie/cookie";
 
-const token = localStorage.token;
+//const token = localStorage.token;
 
 const instance = axios.create({
   baseURL: 'https://platform.fatsecret.com/rest/server.api/',
   headers: {
     "Content-Type": "application/json; charset=UTF-8",
-    Authorization: `Bearer ${token}`,
+    //Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${getCookie('Bearer')}`,
   },
 })
 
