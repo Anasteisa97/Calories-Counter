@@ -1,6 +1,6 @@
 {
   "name": "calories-counter",
-  "proxy": "https://justcors.com/tl_713a872/",
+  "proxy": "https://justcors.com/tl_c80b254/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,6 +19,7 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
+    "styled-components": "^6.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

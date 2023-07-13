@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import SearchResult from "./SearchResult";
 import {resetResults} from "../../redux/search-reducer";
-import Error from "../common/Error/Error";
+import Error from "../common/Error";
 
 const SearchResults = (props) => {
   const dispatch = useDispatch();

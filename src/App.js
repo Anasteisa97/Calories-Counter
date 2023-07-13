@@ -7,6 +7,7 @@ import { initializeApp } from "./redux/app-reducer";
 import React from "react";
 import store from "./redux/redux-store";
 import {RightScreenContext} from "./Contexts/contexts";
+import {Loader} from "./components/common/Loader";
 
 function AppContainer(props) {
   let [isRightScreenVisible, setRightScreenVisible] = useState(false);
@@ -22,7 +23,7 @@ function AppContainer(props) {
       <App isRightScreenVisible={isRightScreenVisible}/>
     </RightScreenContext.Provider>
   ) : (
-    <div>wait</div>
+    <Loader size='fullscreen'/>
   );
 }
 

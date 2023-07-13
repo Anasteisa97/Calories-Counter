@@ -1,7 +1,7 @@
 import {getCookie, setCookie} from "./cookie";
-import {getToken} from "../../api/token/getToken";
+import {getToken} from "../../api/getToken";
 
-function saveJWTinCookie(token) {
+function saveTokenInCookie(token) {
   setCookie('Bearer', token, {
     expires: new Date(Date.now() + 86400e3)
   })
@@ -12,7 +12,7 @@ export const checkTokenInCookie = new Promise((resolve) => {
     resolve();
   } else {
     getToken()
-      .then(data => saveJWTinCookie(data))
+      .then(data => saveTokenInCookie(data))
       .then(() => resolve())
   }
 })
