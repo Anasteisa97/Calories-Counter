@@ -5,17 +5,18 @@ const LoaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: ${props => props.$fullscreen ? "100vh" : "auto"};
+  height: ${ props => {
+    switch( props.size ){
+      case 'fullscreen':
+        return '100vh';
+      default:
+        return 'auto';
+    }
+  }};
 `
 
 export const Loader = ({size}) => {
-  return (
-    size === 'fullscreen'
-      ? <LoaderWrapper $fullscreen>
-        <CircularProgress/>
-      </LoaderWrapper>
-      : <LoaderWrapper>
-        <CircularProgress/>
-      </LoaderWrapper>
-  )
+  return <LoaderWrapper size={size}>
+    <CircularProgress/>
+  </LoaderWrapper>
 }

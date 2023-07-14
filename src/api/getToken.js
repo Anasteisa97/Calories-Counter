@@ -1,4 +1,4 @@
-const justCorsUrl = "https://justcors.com/tl_c80b254/";
+const justCorsUrl = "https://justcors.com/tl_da85250/";
 const getTokenUrl = "https://oauth.fatsecret.com/connect/token";
 
 export const getToken = async () => {
