@@ -1,8 +1,8 @@
-const justCorsUrl = "https://justcors.com/tl_da85250/";
+const cors = "https://cors-anywhere.herokuapp.com/";
 const getTokenUrl = "https://oauth.fatsecret.com/connect/token";
 
 export const getToken = async () => {
-  const response = await fetch(justCorsUrl + getTokenUrl, {
+  const response = await fetch(cors + getTokenUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",

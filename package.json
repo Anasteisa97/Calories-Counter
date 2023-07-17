@@ -1,6 +1,5 @@
 {
   "name": "calories-counter",
-  "proxy": "https://justcors.com/tl_da85250/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
