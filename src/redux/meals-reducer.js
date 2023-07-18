@@ -13,6 +13,9 @@ const initialState = {
       number_of_units: 1,
       calories: 60,
       food_name: "Chicken Rice Soup",
+      protein: "1.48",
+      fat: "1.48",
+      carbohydrate: "22.77",
       totalNumberOfUnits: 1
     },
     {
@@ -24,6 +27,9 @@ const initialState = {
       number_of_units: 1,
       calories: 4,
       food_name: "Coffee with Cream",
+      protein: "1.48",
+      fat: "1.48",
+      carbohydrate: "22.77",
       totalNumberOfUnits: 3 // тут считать
     },
     {
@@ -35,6 +41,9 @@ const initialState = {
       number_of_units: 100,
       calories: 266,
       food_name: "White Bread",
+      protein: "1.48",
+      fat: "1.48",
+      carbohydrate: "22.77",
       totalNumberOfUnits: 120 // тут считать
     },
   ],

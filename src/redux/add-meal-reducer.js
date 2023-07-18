@@ -5,7 +5,9 @@ export const fetchById = createAsyncThunk("getFoodById", async (id) => {
   return await searchApi.getById(id);
 });
 
-const servingProps = ['calories', 'measurement_description', 'metric_serving_amount', 'metric_serving_unit', 'number_of_units', 'serving_description'];
+const servingProps = ['calories', 'measurement_description', 'metric_serving_amount',
+  'metric_serving_unit', 'number_of_units', 'serving_description',
+  'protein', 'fat', 'carbohydrate'];
 
 const initialState = {
   ingestionType: "",

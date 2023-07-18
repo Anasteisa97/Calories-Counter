@@ -1,7 +1,7 @@
 import CloseIcon from '@mui/icons-material/Close';
 
 export const Meal = ({
-  totalMealCalories, totalMetricServingAmount, deleteMealOnMain, meal,
+  totalMealCalories, totalMetricServingAmount, totalProtein, totalFat, totalCarbohydrate, deleteMealOnMain, meal,
 }) => {
   let {
     id,
@@ -15,9 +15,12 @@ export const Meal = ({
     <div className="flex items-center justify-between">
       <div>
         <div>{food_name}</div>
-        <div className="text-xs text-slate-500">
+        <div className="text-sm text-slate-500">
           {totalMetricServingAmount} {metric_serving_unit}{" "}
           / {totalNumberOfUnits} {measurement_description}
+        </div>
+        <div className="text-xs text-slate-500">
+          {totalProtein} / {totalFat} / {totalCarbohydrate}
         </div>
       </div>
       <span className="grow mx-2 text-right">{totalMealCalories}</span>

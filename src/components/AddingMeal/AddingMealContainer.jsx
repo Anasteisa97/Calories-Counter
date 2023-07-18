@@ -21,7 +21,8 @@ const AddingMealContainer = ( props ) => {
   let [currentServing, setCurrentServing] = useState();
   let [selectedIngestionType, setSelectedIngestionType] = useState(ingestionType);
 
-  const handleBtnAddClick = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setSearchScreenActive(true);
     let newMeal = {
       ...currentServing,
@@ -48,7 +49,7 @@ const AddingMealContainer = ( props ) => {
       selectedIngestionType={selectedIngestionType}
       setSelectedIngestionType={setSelectedIngestionType}
       ingestionTypes={ingestionTypes}
-      handleBtnAddClick={handleBtnAddClick}
+      handleSubmit={handleSubmit}
       serving={currentServing}
       handleChangeServing={handleChangeServing}
     />
