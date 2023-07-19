@@ -1,14 +1,16 @@
 import React, {useState, useDeferredValue, Suspense, lazy} from "react";
-//import SearchResults from "./SearchResults";
+import SearchResults from "./SearchResults";
 import {TextField} from "@mui/material";
-const SearchResults = lazy(() => import('./SearchResults'));
+import {useDispatch} from "react-redux";
+import {fetchSearchResults} from "../../redux/search-reducer";
 
 const Search = (props) => {
+  const dispatch = useDispatch();
   const [query, setQuery] = useState('');
-  const deferredQuery = useDeferredValue(query);
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
+    dispatch(fetchSearchResults(e.target.value));
   }
 
   return (
@@ -21,9 +23,7 @@ const Search = (props) => {
           onChange={(e) => handleInputChange(e)}
         />
       </div>
-      <Suspense fallback={<h2>Loading...</h2>}>
-        <SearchResults query={deferredQuery} />
-      </Suspense>
+      <SearchResults />
     </>
   )
 }

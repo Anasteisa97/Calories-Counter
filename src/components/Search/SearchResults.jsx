@@ -4,16 +4,15 @@ import SearchResult from "./SearchResult";
 import {useDispatch, useSelector} from "react-redux";
 import Error from "../common/Error";
 
-const SearchResults = ({query}) => {
+const SearchResults = (props) => {
   const {results, error} = useSelector((state) => state.search);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchSearchResults(query));
     return () => {
       dispatch(resetResults())
     }
-  }, [query])
+  }, [])
 
   if (error) {
     return <Error message={error}/>
@@ -40,4 +39,4 @@ const SearchResults = ({query}) => {
   );
 };
 
-export default React.memo(SearchResults);
+export default SearchResults;
