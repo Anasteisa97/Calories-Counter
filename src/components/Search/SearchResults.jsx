@@ -1,18 +1,19 @@
 import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {fetchSearchResults, resetResults} from "../../redux/search-reducer";
 import SearchResult from "./SearchResult";
-import {resetResults} from "../../redux/search-reducer";
+import {useDispatch, useSelector} from "react-redux";
 import Error from "../common/Error";
 
-const SearchResults = (props) => {
+const SearchResults = ({query}) => {
+  const {results, error} = useSelector((state) => state.search);
   const dispatch = useDispatch();
-  const { results, error } = useSelector((state) => state.search);
 
   useEffect(() => {
+    dispatch(fetchSearchResults(query));
     return () => {
-      dispatch(resetResults());
+      dispatch(resetResults())
     }
-  }, [])
+  }, [query])
 
   if (error) {
     return <Error message={error}/>
@@ -20,18 +21,20 @@ const SearchResults = (props) => {
 
   return (
     <div className="rounded-xl shadow-md bg-sky-50 self-stretch max-h-screen overflow-auto">
-      {results && Array.isArray(results) ? (
-        results.map((meal) => (
+      {results && (
+        Array.isArray(results)
+        ? (results.map((meal) => (
+            <SearchResult
+              meal={meal}
+              key={meal.food_id}
+            />
+          ))
+        ) : (
           <SearchResult
-            meal={meal}
-            key={meal.food_id}
+            meal={results}
+            key={results.food_id}
           />
-        ))
-      ) : (
-        <SearchResult
-          meal={results}
-          key={results.food_id}
-        />
+        )
       )}
     </div>
   );

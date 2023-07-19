@@ -19,7 +19,7 @@ const RightScreenContainer = (props) => {
 
 const RightScreen = ({isSearchActive, hideScreen}) => {
   return (
-    <div className="shadow-2xl relative w-1/3 border-l-4 p-5 flex flex-col h-screen items-center justify-center">
+    <div className="shadow-2xl relative w-1/3 border-l-4 p-5 pt-12 flex flex-col h-screen items-center justify-center">
       <button
         onClick={() => hideScreen()}
         className="absolute right-4 top-4"

@@ -1,16 +1,16 @@
 import { Meal } from "./Meal";
 import { connect } from "react-redux";
 import { deleteMealOnMain } from "../../redux/meals-reducer";
-import {countTotalMealParam} from "../../utils/countTotalMealParam";
+import {getTotalMealParam} from "../../utils/getTotalMealParam";
 
 const MealContainer = (props) => {
   let { calories, metric_serving_amount, number_of_units, totalNumberOfUnits, protein, fat, carbohydrate } = props.meal;
 
-  const totalMealCalories = countTotalMealParam(calories, totalNumberOfUnits, number_of_units);
-  const totalMetricServingAmount = countTotalMealParam(metric_serving_amount, totalNumberOfUnits, number_of_units);
-  const totalProtein = countTotalMealParam(protein, totalNumberOfUnits, number_of_units);
-  const totalFat = countTotalMealParam(fat, totalNumberOfUnits, number_of_units);
-  const totalCarbohydrate = countTotalMealParam(carbohydrate, totalNumberOfUnits, number_of_units);
+  const totalMealCalories = getTotalMealParam(calories, totalNumberOfUnits, number_of_units);
+  const totalMetricServingAmount = getTotalMealParam(metric_serving_amount, totalNumberOfUnits, number_of_units);
+  const totalProtein = getTotalMealParam(protein, totalNumberOfUnits, number_of_units);
+  const totalFat = getTotalMealParam(fat, totalNumberOfUnits, number_of_units);
+  const totalCarbohydrate = getTotalMealParam(carbohydrate, totalNumberOfUnits, number_of_units);
 
   return (
     <Meal

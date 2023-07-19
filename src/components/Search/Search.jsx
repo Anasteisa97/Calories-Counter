@@ -1,28 +1,29 @@
-import SearchResults from "./SearchResults";
-import {fetchSearchResults} from "../../redux/search-reducer";
-import {useDispatch} from "react-redux";
-import {useState} from "react";
+import React, {useState, useDeferredValue, Suspense, lazy} from "react";
+//import SearchResults from "./SearchResults";
 import {TextField} from "@mui/material";
+const SearchResults = lazy(() => import('./SearchResults'));
 
 const Search = (props) => {
-  const dispatch = useDispatch();
-  let [searchString, setSearchString] = useState('');
+  const [query, setQuery] = useState('');
+  const deferredQuery = useDeferredValue(query);
 
   const handleInputChange = (e) => {
-    setSearchString(e.target.value);
-    dispatch(fetchSearchResults(e.target.value));
+    setQuery(e.target.value);
   }
 
   return (
     <>
-      <TextField
-        id="outlined-basic" label="Search" variant="outlined"
-        type="search"
-        value={searchString}
-        style={{marginBottom: 24}}
-        onChange={(e) => handleInputChange(e)}
-      />
-      <SearchResults />
+      <div className="mb-4">
+        <TextField
+          id="outlined-basic" label="Search" variant="outlined"
+          type="search"
+          value={query}
+          onChange={(e) => handleInputChange(e)}
+        />
+      </div>
+      <Suspense fallback={<h2>Loading...</h2>}>
+        <SearchResults query={deferredQuery} />
+      </Suspense>
     </>
   )
 }

@@ -1,4 +1,5 @@
 import { Ingestion } from "./Ingestion";
+import {getTotalMealParam} from "../../utils/getTotalMealParam";
 
 const IngestionList = ({ ingestionTypes, meals }) => {
   const getMealsInIngestion = (meals, title) => {
@@ -7,7 +8,7 @@ const IngestionList = ({ ingestionTypes, meals }) => {
 
   const getIngestionTotalCalories = (meals, title) => {
     return getMealsInIngestion(meals, title).reduce(
-      (acc, curVal) => acc + ((curVal.totalNumberOfUnits * curVal.calories) / curVal.number_of_units),
+      (acc, cur) => acc + getTotalMealParam(cur.calories, cur.totalNumberOfUnits, cur.number_of_units),
       0
     );
   };
