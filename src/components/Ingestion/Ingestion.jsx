@@ -4,6 +4,7 @@ import {setIngestionType} from "../../redux/add-meal-reducer";
 import {useContext} from "react";
 import {RightScreenContext} from "../../Contexts/contexts";
 import AddIcon from '@mui/icons-material/Add';
+import {green} from "@mui/material/colors";
 
 export const Ingestion = ({ meals, ingestionTotalCalories, title }) => {
 
@@ -17,18 +18,18 @@ export const Ingestion = ({ meals, ingestionTotalCalories, title }) => {
   }
 
   return (
-    <div className="w-80 max-w-full bg-sky-50 p-4 rounded-2xl shadow-lg">
-      <div className="flex items-center justify-between">
-        <span className="text-2xl">{title}</span>
+    <div className="bg-blue-500 p-6 rounded-2xl shadow-lg max-w-xl">
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-3xl text-white">{title}</span>
         {ingestionTotalCalories > 0 && (
-          <span className="grow mx-2 text-right text-xl">
+          <span className="grow mr-2 ml-6 text-right text-2xl text-white">
             {ingestionTotalCalories}
           </span>)}
         <button
           className="p-1"
           onClick={() => handleBtnAddClick()}
         >
-          <AddIcon fontSize="small" />
+          <AddIcon fontSize="large" sx={{ color: green['A400'] }} />
         </button>
       </div>
       {meals.length > 0 && meals.map((meal) => <MealContainer meal={meal} key={meal.id} />)}

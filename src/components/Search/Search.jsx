@@ -14,7 +14,7 @@ const Search = (props) => {
   }, []);
 
   const debouncedSendRequest = useMemo(() => {
-    return _debounce(sendBackendRequest, 1000);
+    return _debounce(sendBackendRequest, 500);
   }, [sendBackendRequest]);
 
   const onChange = (e) => {
