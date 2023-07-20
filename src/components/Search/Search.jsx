@@ -1,16 +1,26 @@
-import React, {useState, useDeferredValue, Suspense, lazy} from "react";
+import React, {useState, useCallback, useMemo} from "react";
 import SearchResults from "./SearchResults";
 import {TextField} from "@mui/material";
 import {useDispatch} from "react-redux";
 import {fetchSearchResults} from "../../redux/search-reducer";
+import _debounce from 'lodash/debounce';
 
 const Search = (props) => {
   const dispatch = useDispatch();
   const [query, setQuery] = useState('');
 
-  const handleInputChange = (e) => {
-    setQuery(e.target.value);
-    dispatch(fetchSearchResults(e.target.value));
+  const sendBackendRequest = useCallback((value) => {
+    dispatch(fetchSearchResults(value));
+  }, []);
+
+  const debouncedSendRequest = useMemo(() => {
+    return _debounce(sendBackendRequest, 1000);
+  }, [sendBackendRequest]);
+
+  const onChange = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    debouncedSendRequest(value);
   }
 
   return (
@@ -20,7 +30,7 @@ const Search = (props) => {
           id="outlined-basic" label="Search" variant="outlined"
           type="search"
           value={query}
-          onChange={(e) => handleInputChange(e)}
+          onChange={(e) => onChange(e)}
         />
       </div>
       <SearchResults />

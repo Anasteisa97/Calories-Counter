@@ -1,10 +1,11 @@
 import IngestionList from "../Ingestion/IngestionList";
 import {useSelector} from "react-redux";
+import {getTotalMealParam} from "../../utils/getTotalMealParam";
 
 const MainScreen = (props) => {
   const {ingestionTypes, mealsMain} = useSelector((state => state.meals))
   const totalCalories = mealsMain.reduce(
-    (acc, curVal) => acc + ((curVal.totalNumberOfUnits * curVal.calories) / curVal.number_of_units),
+    (acc, cur) => acc + getTotalMealParam(cur.calories, cur.totalNumberOfUnits, cur.number_of_units),
     0
   );
   return (
