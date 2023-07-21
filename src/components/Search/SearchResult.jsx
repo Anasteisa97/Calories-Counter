@@ -14,7 +14,7 @@ const SearchResult = ({ meal }) => {
 
   return (
     <div
-      className="p-3 hover:bg-blue-100 cursor-pointer"
+      className="p-3 hover:bg-slate-200 cursor-pointer"
       onClick={() => handleClick()}
     >
       <p className="mb-1 text-blue-600 font-medium">{meal.food_name}</p>

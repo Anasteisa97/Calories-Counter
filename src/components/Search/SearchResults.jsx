@@ -19,7 +19,7 @@ const SearchResults = (props) => {
   }
 
   return (
-    <div className="rounded-xl  bg-blue-50 self-stretch max-h-screen overflow-auto">
+    <div className="rounded-xl bg-slate-50 shadow-xl self-stretch max-h-screen overflow-auto">
       {results && (
         Array.isArray(results)
         ? (results.map((meal) => (

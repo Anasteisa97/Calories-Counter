@@ -13,7 +13,7 @@ export const Meal = ({
   } = meal;
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between mb-2">
       <div>
         <div className="text-white">{food_name}</div>
         <div className="text-sm text-slate-200">
