@@ -25,7 +25,7 @@ const AddingMeal =
           >
             <ArrowBackIcon/>
           </button>
-          <h2 className="mb-6 text-2xl">{food_name}</h2>
+          <h2 className="mb-6 text-3xl text-blue-500 font-medium text-center	">{food_name}</h2>
 
           <form
             className="flex flex-col items-center justify-center gap-5"
@@ -65,21 +65,21 @@ const AddingMeal =
               </Select>
             </FormControl>
 
-            <div className="text-xl mt-6">
+            <div className="text-2xl mt-6">
               {getTotalMealParam(serving.calories, serving.totalNumberOfUnits, serving.number_of_units)} cal
             </div>
 
             <div className="flex flex-col items-center">
               <span>
-                {getTotalMealParam(serving.protein, serving.totalNumberOfUnits, serving.number_of_units)}{" "}
-                / {getTotalMealParam(serving.fat, serving.totalNumberOfUnits, serving.number_of_units)}{" "}
-                / {getTotalMealParam(serving.carbohydrate, serving.totalNumberOfUnits, serving.number_of_units)}</span>
-              <p>protein / fat / carbohydrate</p>
+                Fat: {getTotalMealParam(serving.fat, serving.totalNumberOfUnits, serving.number_of_units)}g{" "}
+                | Carbs: {getTotalMealParam(serving.carbohydrate, serving.totalNumberOfUnits, serving.number_of_units)}g{" "}
+                | Protein: {getTotalMealParam(serving.protein, serving.totalNumberOfUnits, serving.number_of_units)}g{" "}
+              </span>
             </div>
 
             <button
               type="submit"
-              className="text-lg mt-6 px-6 py-3 bg-sky-100 rounded-xl shadow-lg"
+              className="text-lg mt-6 px-6 py-3 bg-blue-500 rounded-xl shadow-lg text-white text-xl"
             >
               <AddIcon/> ADD
             </button>

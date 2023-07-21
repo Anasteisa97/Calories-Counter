@@ -14,10 +14,10 @@ const SearchResult = ({ meal }) => {
 
   return (
     <div
-      className="p-3 hover:bg-blue-100 border-b-2 last:border-b-0 cursor-pointer"
+      className="p-3 hover:bg-blue-100 cursor-pointer"
       onClick={() => handleClick()}
     >
-      <p className="mb-1">{meal.food_name}</p>
+      <p className="mb-1 text-blue-600 font-medium">{meal.food_name}</p>
       <p className="text-sm text-slate-500">{meal.food_description}</p>
     </div>
   );

@@ -21,12 +21,12 @@ export const Meal = ({
           / {totalNumberOfUnits} {measurement_description}
         </div>
         <div className="text-xs text-slate-300">
-          {totalProtein} / {totalFat} / {totalCarbohydrate}
+          f {totalFat} | c {totalCarbohydrate} | p {totalProtein}
         </div>
       </div>
       <span className="grow mx-2 text-right text-slate-200">{totalMealCalories}</span>
       <button className="p-1" onClick={() => deleteMealOnMain(id)}>
-        <CloseIcon fontSize="small" sx={{ color: red['A700'] }}/>
+        <CloseIcon fontSize="medium" sx={{ color: red[700] }}/>
       </button>
     </div>
   );

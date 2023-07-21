@@ -22,14 +22,14 @@ export const Ingestion = ({ meals, ingestionTotalCalories, title }) => {
       <div className="flex items-center justify-between mb-3">
         <span className="text-3xl text-white">{title}</span>
         {ingestionTotalCalories > 0 && (
-          <span className="grow mr-2 ml-6 text-right text-2xl text-white">
+          <span className="grow mr-4 ml-6 text-right text-2xl text-white">
             {ingestionTotalCalories}
           </span>)}
         <button
-          className="p-1"
+          className="p-1 w-10 h-10 bg-blue-50 rounded-full"
           onClick={() => handleBtnAddClick()}
         >
-          <AddIcon fontSize="large" sx={{ color: green['A400'] }} />
+          <AddIcon fontSize="medium" sx={{ color: green[500] }} />
         </button>
       </div>
       {meals.length > 0 && meals.map((meal) => <MealContainer meal={meal} key={meal.id} />)}
