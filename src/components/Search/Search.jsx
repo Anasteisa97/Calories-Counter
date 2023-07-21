@@ -2,7 +2,7 @@ import React, {useState, useCallback, useMemo} from "react";
 import SearchResults from "./SearchResults";
 import {TextField} from "@mui/material";
 import {useDispatch} from "react-redux";
-import {fetchSearchResults} from "../../redux/search-reducer";
+import {fetchSearchResults, setFetching} from "../../redux/search-reducer";
 import _debounce from 'lodash/debounce';
 
 const Search = (props) => {
@@ -18,6 +18,7 @@ const Search = (props) => {
   }, [sendBackendRequest]);
 
   const onChange = (e) => {
+    dispatch(setFetching());
     const value = e.target.value;
     setQuery(value);
     debouncedSendRequest(value);
@@ -33,7 +34,7 @@ const Search = (props) => {
           onChange={(e) => onChange(e)}
         />
       </div>
-      <SearchResults />
+      <SearchResults query={query} />
     </>
   )
 }

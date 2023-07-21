@@ -1,11 +1,12 @@
 import React, {useEffect} from "react";
-import {fetchSearchResults, resetResults} from "../../redux/search-reducer";
+import {resetResults} from "../../redux/search-reducer";
 import SearchResult from "./SearchResult";
 import {useDispatch, useSelector} from "react-redux";
 import Error from "../common/Error";
+import Info from "../common/Info";
 
-const SearchResults = (props) => {
-  const {results, error} = useSelector((state) => state.search);
+const SearchResults = ({query}) => {
+  const {results, error, isFetching} = useSelector((state) => state.search);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,6 +17,12 @@ const SearchResults = (props) => {
 
   if (error) {
     return <Error message={error}/>
+  }
+
+  if (!isFetching) {
+    if ((query !== '') && results.length === 0 ) {
+      return <Info message="Nothing was found at your request"/>
+    }
   }
 
   return (
