@@ -1,7 +1,7 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import AddIcon from '@mui/icons-material/Add';
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
-import {getTotalMealParam} from "../../utils/getTotalMealParam";
+import {getMealParam} from "../../utils/getMealParam";
 
 const AddingMeal =
   ({
@@ -66,14 +66,14 @@ const AddingMeal =
             </FormControl>
 
             <div className="text-2xl mt-6">
-              {getTotalMealParam(serving.calories, serving.totalNumberOfUnits, serving.number_of_units)} cal
+              {getMealParam(serving.calories, serving.totalNumberOfUnits, serving.number_of_units)} cal
             </div>
 
             <div className="flex flex-col items-center">
               <span>
-                Fat: {getTotalMealParam(serving.fat, serving.totalNumberOfUnits, serving.number_of_units)}g{" "}
-                | Carbs: {getTotalMealParam(serving.carbohydrate, serving.totalNumberOfUnits, serving.number_of_units)}g{" "}
-                | Protein: {getTotalMealParam(serving.protein, serving.totalNumberOfUnits, serving.number_of_units)}g{" "}
+                Fat: {getMealParam(serving.fat, serving.totalNumberOfUnits, serving.number_of_units)}g{" "}
+                | Carbs: {getMealParam(serving.carbohydrate, serving.totalNumberOfUnits, serving.number_of_units)}g{" "}
+                | Protein: {getMealParam(serving.protein, serving.totalNumberOfUnits, serving.number_of_units)}g{" "}
               </span>
             </div>
 

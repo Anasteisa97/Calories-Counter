@@ -1,5 +1,5 @@
 import { Ingestion } from "./Ingestion";
-import {getTotalMealParam} from "../../utils/getTotalMealParam";
+import {getMealParam} from "../../utils/getMealParam";
 
 const IngestionList = ({ ingestionTypes, meals }) => {
   const getMealsInIngestion = (meals, title) => {
@@ -8,7 +8,7 @@ const IngestionList = ({ ingestionTypes, meals }) => {
 
   const getIngestionTotalCalories = (meals, title) => {
     return getMealsInIngestion(meals, title).reduce(
-      (acc, cur) => acc + getTotalMealParam(cur.calories, cur.totalNumberOfUnits, cur.number_of_units),
+      (acc, cur) => acc + getMealParam(cur.calories, cur.totalNumberOfUnits, cur.number_of_units),
       0
     );
   };
