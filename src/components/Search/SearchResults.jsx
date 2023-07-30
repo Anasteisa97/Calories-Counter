@@ -20,15 +20,13 @@ const SearchResults = ({query}) => {
     return <Error message={error}/>
   }
 
-  if (!isFetching) {
-    if ((query !== '') && results.length === 0) {
+  if (query) {
+    if (isFetching) {
+      return <SkeletonSearch/>
+    }
+    if (results.length === 0) {
       return <Info message="Nothing was found at your request"/>
     }
-  } else {
-    return <SkeletonSearch/>
-  }
-
-  if (query) {
     return (
       <div className="rounded-xl border shadow-xl self-stretch max-h-screen overflow-auto">
         {Array.isArray(results)
@@ -46,7 +44,7 @@ const SearchResults = ({query}) => {
           )
         }
       </div>
-    );
+    )
   }
 
 };

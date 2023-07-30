@@ -16,7 +16,7 @@ export const fetchSearchResults = createAsyncThunk(
 const initialState = {
   results: [],
   error: null,
-  isFetching: true
+  isFetching: false,
 };
 
 const searchSlice = createSlice({
