@@ -1,19 +1,17 @@
 import Search from "../Search/Search";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import AddingMealContainer from "../AddingMeal/AddingMealContainer";
 import {RightScreenContext, SearchActiveContext} from "../../Contexts/contexts";
 import CloseIcon from '@mui/icons-material/Close';
 
 const RightScreenContainer = (props) => {
   let {setRightScreenVisible} = useContext(RightScreenContext)
-  let [searchScreenIsActive, setSearchScreenActive] = useState(true);
+  let {searchScreenIsActive} = useContext(SearchActiveContext)
   return (
-    <SearchActiveContext.Provider value={{searchScreenIsActive, setSearchScreenActive}}>
-      <RightScreen
-        isSearchActive={searchScreenIsActive}
-        hideScreen={() => setRightScreenVisible(false)}
-      />
-    </SearchActiveContext.Provider>
+    <RightScreen
+      isSearchActive={searchScreenIsActive}
+      hideScreen={() => setRightScreenVisible(false)}
+    />
   );
 };
 
