@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {RightScreenContext, SearchActiveContext} from "./contexts";
-import store from "../redux/redux-store";
+import store from "../redux/store";
 import {Provider} from "react-redux";
 
 function Providers({ children }) {
