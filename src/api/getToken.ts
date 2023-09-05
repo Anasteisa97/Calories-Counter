@@ -10,8 +10,8 @@ export const getToken = async () => {
         "Basic " +
         btoa(
           "3db7ae348a784bb69c326c30c05774be" +
-          ":" +
-          "3a1f51f995fa4fa3a5f00a54f5650caf"
+            ":" +
+            "3a1f51f995fa4fa3a5f00a54f5650caf"
         ),
     },
     body: new URLSearchParams({

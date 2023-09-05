@@ -1,7 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { counter } from "../utils/counter";
+import type { Meal } from "../types/types";
 
-const initialState = {
+interface MealsState {
+  ingestionTypes: string[];
+  mealsMain: Meal[];
+}
+
+const initialState: MealsState = {
   ingestionTypes: ["Breakfast", "Lunch", "Dinner", "Snack/other"],
   mealsMain: [
     {
@@ -13,10 +19,10 @@ const initialState = {
       number_of_units: 1,
       calories: 60,
       food_name: "Chicken Rice Soup",
-      protein: "1.48",
-      fat: "1.48",
-      carbohydrate: "22.77",
-      totalNumberOfUnits: 1
+      protein: 1.48,
+      fat: 1.48,
+      carbohydrate: 22.77,
+      totalNumberOfUnits: 1,
     },
     {
       id: counter(),
@@ -27,10 +33,10 @@ const initialState = {
       number_of_units: 1,
       calories: 4,
       food_name: "Coffee with Cream",
-      protein: "1.48",
-      fat: "1.48",
-      carbohydrate: "22.77",
-      totalNumberOfUnits: 3 // тут считать
+      protein: 1.48,
+      fat: 1.48,
+      carbohydrate: 22.77,
+      totalNumberOfUnits: 3, // тут считать
     },
     {
       id: counter(),
@@ -41,10 +47,10 @@ const initialState = {
       number_of_units: 100,
       calories: 266,
       food_name: "White Bread",
-      protein: "1.48",
-      fat: "1.48",
-      carbohydrate: "22.77",
-      totalNumberOfUnits: 120 // тут считать
+      protein: 1.48,
+      fat: 1.48,
+      carbohydrate: 22.77,
+      totalNumberOfUnits: 120, // тут считать
     },
   ],
 };
