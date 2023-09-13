@@ -22,14 +22,16 @@ const IngestionList: FC<IngestionListPrams> = ({ ingestionTypes, meals }) => {
     );
   };
 
-  return ingestionTypes.map((i) => (
-    <Ingestion
-      meals={getMealsInIngestion(meals, i)}
-      title={i}
-      key={i}
-      ingestionTotalCalories={getIngestionTotalCalories(meals, i)}
-    />
-  ));
+  return <>
+    {ingestionTypes.map((i) => (
+      <Ingestion
+        meals={getMealsInIngestion(meals, i)}
+        title={i}
+        key={i}
+        ingestionTotalCalories={getIngestionTotalCalories(meals, i)}
+      />
+    ))}
+  </>
 };
 
 export default IngestionList;
