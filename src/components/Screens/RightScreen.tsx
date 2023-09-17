@@ -1,4 +1,4 @@
-import Search from "../Search/Search";
+ import Search from "../Search/Search";
 import React, { FC, useContext } from "react";
 import AddingMealContainer from "../AddingMeal/AddingMealContainer";
 import {
@@ -25,7 +25,8 @@ const RightScreenContainer: FC = () => {
 
 const RightScreen: FC<RightScreenProps> = ({ isSearchActive, hideScreen }) => {
   return (
-    <div className="shadow-2xl relative w-1/3 border-l-4 p-5 pt-12 flex flex-col h-screen items-center justify-center">
+    <div className="w-full md:w-1/2 lg:w-1/3 md:border-l-4 fixed md:relative
+    bg-neutral-50 shadow-2xl p-5 pt-12 flex flex-col h-screen items-center justify-center">
       <button onClick={hideScreen} className="absolute right-4 top-4">
         <CloseIcon />
       </button>

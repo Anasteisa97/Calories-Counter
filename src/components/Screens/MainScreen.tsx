@@ -17,7 +17,7 @@ const MainScreen: FC = () => {
   return (
     <div className="grow h-screen overflow-y-auto">
       <div className="p-5 flex items-center justify-center flex-col min-h-full">
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid lg:grid-cols-2 gap-5">
           <IngestionList ingestionTypes={ingestionTypes} meals={mealsMain} />
         </div>
         <div className="text-4xl mt-6 mb-6">{totalCalories}</div>

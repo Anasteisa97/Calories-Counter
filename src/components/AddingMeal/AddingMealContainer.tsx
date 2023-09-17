@@ -1,5 +1,5 @@
 import { addMealOnMain } from "../../redux/meals-reducer";
-import React, { useContext, useEffect, useState, FC } from "react";
+import React, { useContext, useEffect, useState, FC, ChangeEvent } from "react";
 import AddingMeal from "./AddingMeal";
 import { SearchActiveContext } from "../../contexts/contexts";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
@@ -11,7 +11,6 @@ const AddingMealContainer: FC = () => {
   const { ingestionType, food_name, servings } = useAppSelector(
     (state) => state.addMeal
   );
-  const ingestionTypes = useAppSelector((state) => state.meals.ingestionTypes);
 
   useEffect(() => {
     if (servings.length) {
@@ -23,7 +22,7 @@ const AddingMealContainer: FC = () => {
   let [selectedIngestionType, setSelectedIngestionType] =
     useState(ingestionType);
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     setSearchActive(true);
     let newMeal = {
@@ -34,26 +33,24 @@ const AddingMealContainer: FC = () => {
     dispatch(addMealOnMain(newMeal));
   };
 
-  const setNumberOfUnits = (e) => {
+  const setNumberOfUnits = (e: ChangeEvent<HTMLInputElement>) => {
     setCurrentServing({
       ...currentServing,
       totalNumberOfUnits: e.target.value,
     });
   };
 
-  const handleChangeServing = (i) => {
+  const handleChangeServing = (i: number) => {
     setCurrentServing(servings[i]);
   };
 
   return (
     <AddingMeal
       backToSearch={() => setSearchActive(true)}
-      servings={servings}
       food_name={food_name}
       setNumberOfUnits={setNumberOfUnits}
       selectedIngestionType={selectedIngestionType}
       setSelectedIngestionType={setSelectedIngestionType}
-      ingestionTypes={ingestionTypes}
       handleSubmit={handleSubmit}
       serving={currentServing}
       handleChangeServing={handleChangeServing}

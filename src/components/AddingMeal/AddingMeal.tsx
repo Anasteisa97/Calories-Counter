@@ -1,27 +1,18 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import AddIcon from "@mui/icons-material/Add";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  TextField,
-} from "@mui/material";
-import { getMealParam } from "../../utils/getMealParam";
+import {getIndexMealParam} from "../../utils/getMealParam";
+import {CountInput, IngestionSelect, MeasurementSelect} from "./FormElements";
 
 type AddingMealProps = {
   serving: any;
   food_name: string;
   backToSearch: () => void;
-  setNumberOfUnits: (e: any) => void;
+  setNumberOfUnits: (e: ChangeEvent<HTMLInputElement>) => void;
   handleChangeServing: (i: number) => void;
-  servings: any;
-  selectedIngestionType: any;
+  selectedIngestionType: string;
   setSelectedIngestionType: (e: any) => void;
   handleSubmit: (e: any) => void;
-  ingestionTypes: any;
 };
 
 const AddingMeal: FC<AddingMealProps> = ({
@@ -30,13 +21,12 @@ const AddingMeal: FC<AddingMealProps> = ({
   backToSearch,
   setNumberOfUnits,
   handleChangeServing,
-  servings,
   selectedIngestionType,
   setSelectedIngestionType,
   handleSubmit,
-  ingestionTypes,
 }) => {
   if (serving) {
+    const mealIndex = serving.totalNumberOfUnits / serving.number_of_units;
     return (
       <>
         <button className="absolute top-4 left-4" onClick={backToSearch}>
@@ -50,88 +40,41 @@ const AddingMeal: FC<AddingMealProps> = ({
           className="flex flex-col items-center justify-center gap-5"
           onSubmit={handleSubmit}
         >
-          <TextField
-            className="w-32"
-            type="number"
+          <CountInput
             value={serving.totalNumberOfUnits}
-            InputProps={{ inputProps: { min: 0 } }}
             onChange={setNumberOfUnits}
           />
 
-          <FormControl fullWidth>
-            <InputLabel id="measurement">Measurement</InputLabel>
-            <Select
-              value={serving.measurement_description}
-              labelId="measurement"
-              label="Measurement"
-            >
-              {servings &&
-                servings.map((s, i) => (
-                  <MenuItem
-                    value={s.measurement_description}
-                    key={s.measurement_description}
-                    onClick={() => handleChangeServing(i)}
-                  >
-                    {s.measurement_description}
-                  </MenuItem>
-                ))}
-            </Select>
-          </FormControl>
+          <MeasurementSelect
+            value={serving.measurement_description}
+            handleChangeItem={handleChangeServing}
+          />
 
-          <FormControl>
-            <InputLabel id="ingestion">Ingestion</InputLabel>
-            <Select
-              value={selectedIngestionType}
-              labelId="ingestion"
-              label="Ingestion"
-              onChange={(e: SelectChangeEvent<any>) =>
-                setSelectedIngestionType(e.target.value)
-              }
-            >
-              {ingestionTypes.map((type) => (
-                <MenuItem value={type} key={type}>
-                  {type}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          <IngestionSelect
+            value={selectedIngestionType}
+            onChange={setSelectedIngestionType}
+          />
 
           <div className="text-2xl mt-6">
-            {getMealParam(
-              serving.calories,
-              serving.totalNumberOfUnits,
-              serving.number_of_units
-            )}{" "}
+            {getIndexMealParam(serving.calories, mealIndex)}{" "}
             cal
           </div>
 
           <div className="flex flex-col items-center">
             <span>
               Fat:{" "}
-              {getMealParam(
-                serving.fat,
-                serving.totalNumberOfUnits,
-                serving.number_of_units
-              )}
+              {getIndexMealParam(serving.fat, mealIndex)}
               g | Carbs:{" "}
-              {getMealParam(
-                serving.carbohydrate,
-                serving.totalNumberOfUnits,
-                serving.number_of_units
-              )}
+              {getIndexMealParam(serving.carbohydrate, mealIndex)}
               g | Protein:{" "}
-              {getMealParam(
-                serving.protein,
-                serving.totalNumberOfUnits,
-                serving.number_of_units
-              )}
+              {getIndexMealParam(serving.protein, mealIndex)}
               g{" "}
             </span>
           </div>
 
           <button
             type="submit"
-            className="text-lg mt-6 px-6 py-3 bg-blue-500 rounded-xl shadow-lg text-white text-xl"
+            className="mt-6 px-6 py-3 bg-blue-500 rounded-xl shadow-lg text-white text-xl"
           >
             <AddIcon /> ADD
           </button>
