@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Meal } from "./Meal";
 import { deleteMealOnMain } from "../../redux/meals-reducer";
-import { getMealParam } from "../../utils/getMealParam";
+import { getIndexMealParam, getMealParam } from "../../utils/getMealParam";
 import type { Meal as MealType } from "../../types/types";
 import { useAppDispatch } from "../../redux/hooks";
 
@@ -25,15 +25,12 @@ const MealContainer: FC<MealContainerProps> = ({
   },
 }) => {
   const dispatch = useAppDispatch();
-  const totalCalories = getMealParam(calories, total, num);
-  const totalMetricServingAmount = getMealParam(
-    metric_serving_amount,
-    total,
-    num
-  );
-  const totalProtein = getMealParam(protein, total, num);
-  const totalFat = getMealParam(fat, total, num);
-  const totalCarbohydrate = getMealParam(carbohydrate, total, num);
+  const index = total / num;
+  const totalCalories = getIndexMealParam(calories, index);
+  const totalMetricServingAmount = getIndexMealParam(metric_serving_amount, index);
+  const totalProtein = getIndexMealParam(protein, index);
+  const totalFat = getIndexMealParam(fat, index);
+  const totalCarbohydrate = getIndexMealParam(carbohydrate, index);
 
   const onDelete = (id: number) => dispatch(deleteMealOnMain(id));
 

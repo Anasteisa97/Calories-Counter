@@ -25,8 +25,8 @@ const RightScreenContainer: FC = () => {
 
 const RightScreen: FC<RightScreenProps> = ({ isSearchActive, hideScreen }) => {
   return (
-    <div className="w-full md:w-1/2 lg:w-1/3 md:border-l-4 fixed md:relative
-    bg-neutral-50 shadow-2xl p-5 pt-12 flex flex-col h-screen items-center justify-center">
+    <div className="w-full md:w-1/2 lg:w-1/3 md:border-l-4 fixed md:relative p-6 xl:p-10
+    bg-neutral-50 shadow-2xl pt-12 flex flex-col h-screen items-center justify-center">
       <button onClick={hideScreen} className="absolute right-4 top-4">
         <CloseIcon />
       </button>

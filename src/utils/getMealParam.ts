@@ -12,7 +12,7 @@ export function getIndexMealParam(
   paramCount: number,
   index: number
 ) {
-  return +Number(index * paramCount).toFixed(2);
+  return +Number(index * paramCount).toFixed(1);
 }
 
 export const getTotalParam = (param: string, meals: Meal[]) => {

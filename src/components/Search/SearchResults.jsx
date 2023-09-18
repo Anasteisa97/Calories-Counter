@@ -28,7 +28,7 @@ const SearchResults = ({ query }) => {
       return <Info message="Nothing was found at your request" />;
     }
     return (
-      <div className="rounded-xl border shadow-xl self-stretch max-h-screen overflow-auto">
+      <div className="grid gap-3 self-stretch max-h-screen overflow-auto">
         {Array.isArray(results) ? (
           results.map((meal) => <SearchResult meal={meal} key={meal.food_id} />)
         ) : (

@@ -3,6 +3,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import AddIcon from "@mui/icons-material/Add";
 import {getIndexMealParam} from "../../utils/getMealParam";
 import {CountInput, IngestionSelect, MeasurementSelect} from "./FormElements";
+import CaloriesIcon from "../../assets/icons/calories.png"
 
 type AddingMealProps = {
   serving: any;
@@ -32,7 +33,7 @@ const AddingMeal: FC<AddingMealProps> = ({
         <button className="absolute top-4 left-4" onClick={backToSearch}>
           <ArrowBackIcon />
         </button>
-        <h2 className="mb-6 text-3xl text-blue-500 font-medium text-center	">
+        <h2 className="mb-6 text-3xl font-medium text-center	">
           {food_name}
         </h2>
 
@@ -55,9 +56,9 @@ const AddingMeal: FC<AddingMealProps> = ({
             onChange={setSelectedIngestionType}
           />
 
-          <div className="text-2xl mt-6">
-            {getIndexMealParam(serving.calories, mealIndex)}{" "}
-            cal
+          <div className="text-2xl mt-6 flex gap-1">
+            <span>{getIndexMealParam(serving.calories, mealIndex)}</span>
+            <img src={CaloriesIcon} alt="" className="w-8 h-8"/>
           </div>
 
           <div className="flex flex-col items-center">
@@ -74,7 +75,7 @@ const AddingMeal: FC<AddingMealProps> = ({
 
           <button
             type="submit"
-            className="mt-6 px-6 py-3 bg-blue-500 rounded-xl shadow-lg text-white text-xl"
+            className="transition mt-6 px-6 py-3 bg-lime-500 hover:bg-lime-600 rounded-xl shadow-lg text-white text-xl"
           >
             <AddIcon /> ADD
           </button>
